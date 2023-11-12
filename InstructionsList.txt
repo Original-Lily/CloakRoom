@@ -1,2 +1,0 @@
-echo test test
-python3 ChatProj/ClientTODO.py
