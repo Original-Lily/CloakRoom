@@ -1,7 +1,5 @@
 from cryptography.fernet import Fernet
-import rsa
-import socket
-import sys
+import rsa, socket, sys
 
 #########################################################################################
 # Generate a key pair for the client fucntion:
