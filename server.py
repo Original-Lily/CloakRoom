@@ -18,7 +18,6 @@ if PORT < 0 or PORT > 65535 or not isinstance(PORT, int):
 
 clients = []
 usernames = []
-
 server = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
 server.bind((HOST, PORT))
 server.listen()

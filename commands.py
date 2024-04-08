@@ -1,16 +1,14 @@
 import os
 
-def handle_command(client,message, clients, usernames):
-    if message == 'count':
-        user_count(client, clients)
-    elif message == 'help':
-        help_message(client)
-    elif message == 'users':
-        show_users(client, usernames)
-    elif message == 'clear':
-        clear_chat(client)
-    else:
-        client.send(f"Invalid command.".encode('utf-8'))
+def handle_command(client, message, clients, usernames):
+    command_handlers = {
+        'count': user_count,
+        'help': help_message,
+        'users': lambda: show_users(client, usernames),
+        'clear': lambda: clear_chat(client),
+    }
+    handler = command_handlers.get(message, lambda: client.send("Invalid command.".encode('utf-8')))
+    handler()
 
 def user_count(client, clients):
     client.send(f"Number of users online: {len(clients)}".encode('utf-8'))

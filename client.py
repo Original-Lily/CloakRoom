@@ -46,6 +46,5 @@ def send():
 
 receive_thread = threading.Thread(target=receive)
 receive_thread.start()
-
 send_thread = threading.Thread(target=send)
 send_thread.start()
