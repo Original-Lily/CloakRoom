@@ -1,50 +1,42 @@
 # CloakRoom
 
-Welcome to **CloakRoom** – your ultimate solution for secure application messaging. CloakRoom allows you to establish a robust connection that ensures the confidentiality, authentication, and integrity of your messages between clients and servers, all implemented using the Python programming language.
+Welcome to **CloakRoom** – my solution for secure application messaging. CloakRoom allows you to establish a robust connection that ensures the confidentiality, authentication, and integrity of your messages between clients and servers, all implemented using the Python programming language, utilizing socket programming and threading. 
 
-This process is similar to components that exist in many applications (e.g. secure email, SSH, ..). The secure connection should provide:
-
-• Message confidentiality
-
-• Sender authentication
-
-• Message integrity
-
-• and symmetric key distribution
-
+A server is set up, allowing multiple clients to establish a connection to a server and the server broadcast the messages that clients send to each other. This project also has an logging and command-execution features. Clients can run specific commands such as number of online users or clearing the chat. And, All the messages ,that are sent by clients, are logged by the server in a server.log file.
 
 ## Key Features
 
-• All messages from client to the server are confidential. It is assumed both ends trust the public keys
+• All messages from client to the server are confidential, through AES algorithm
 
-• Message security is ensured, meaning it cannot be read even if intercepted
+• Command-line tools enable meta-data on the current session to be explored
 
-• Server verifies message integrity between clients
+• Client-Server architecture allowing multiple clients to connect and commune
 
-• The client generates a secret key and uses a symmetric algorithm to encrypt the message and signature
+• Multithreading is implemented to handle simultaneous sending & recieving of messages
 
-• The client uses the server’s public key to encrypt the secret key
-
+• Reliable packet communication via TCP
 
 ## Running the code
 
 To run the encrypted messaging, you'll need to first ensure the required python modules are installed on your device:
 
-`pip install -r requirements.txt`
+```pip install -r requirements.txt```
 
-To start the server: `python -u server.py`
+To start the server: ```./server.py <hostIP> <port>```
 
-To receive a message from the server, the command is as follows:
+In order to join the server as a client: ```./client.py <hostIP> <port>```
 
-`python -u client.py recv_msg`
+Upon successful connection:
 
-To send a message to the server:
+```Welcome! ```
+```Enter your username: ```
 
-`python -u client.py send_msg "example message"`
+While in the chat room, you can use commands such as:
 
-You are also able to generate new RSA key pair on either the client or server by issuing the `generate_key_pair` command
+```/count``` to return the number of users currently online
 
-`python -u client.py generate_key_pair`
+```/users``` to return a list of users in your session
 
-`python -u server.py generate_key_pair`
+```/clear``` to clear away all text on screen
 
+```/help``` to display your command options
